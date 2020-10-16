@@ -1,0 +1,68 @@
+<div class="container">
+
+<div class="row form">
+  <h2 style="text-align: center; font-weight: 600;">Register Student</h2>
+  <br/>
+    <div [hidden]="submitted" style="width: 400px;">
+      <form [formGroup]="studentsaveform" #savestudent (ngSubmit)="saveStudent()">
+          <div class="form-group">
+              <label for="name">Student Name</label>
+              <input type="text" class="form-control"  formControlName="student_name" data-toggle="tooltip">
+              <div class="alert alert-danger" *ngIf = "(StudentName.touched)  && (StudentName.invalid)" 
+                style="margin-top: 5px;">
+                  <span *ngIf="StudentName.errors.required">Student Name is Required</span>                  
+                </div>
+          </div>
+  
+          <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" formControlName="student_email" data-toggle="tooltip">
+                <div class="alert alert-danger" *ngIf = "(StudentEmail.touched) && (StudentEmail.invalid)" 
+                style="margin-top: 5px;">
+                  <span *ngIf="StudentEmail.errors.required">Student Email is Required</span>
+                    <span *ngIf = "StudentEmail.errors.email"> 
+                        Invalid Email Format 
+                    </span>                   
+                </div>
+          </div>
+  
+          <div class="form-group">
+              <label for="branch">Course</label>
+                <select class="form-control" formControlName="student_branch" data-toggle="tooltip">
+                    <option value="null">--Select Course--</option>
+                  <option value="Computer-Science">Computer Science</option>
+                  <option value="Information-Systems">Information Systems</option>
+                  <option value="Statistics">Statistics</option>
+                  <option value="Mathematics">Mathematics</option>
+                </select>
+          </div>
+
+          <div class="form-group">
+            <label for="gpa">Current GPA</label>
+            <input type="text" class="form-control" formControlName="student_gpa" data-toggle="tooltip">
+              <div class="alert alert-danger" *ngIf = "(StudentGpa.touched)  && (StudentGpa.invalid)" 
+              style="margin-top: 5px;">
+                <span *ngIf="StudentGpa.errors.required">Student GPA is Required</span>
+                <span *ngIf = "StudentGpa.errors.max"> 
+                  Invalid GPA
+              </span>                  
+              </div>
+        </div>
+
+        <div class="form-group">
+          <label for="contact">Contact</label>
+          <input type="text" class="form-control" formControlName="student_contact" data-toggle="tooltip">
+            <div class="alert alert-danger" *ngIf = "(StudentContact.touched)  && (StudentContact.invalid)" 
+            style="margin-top: 5px;">
+              <span *ngIf="StudentContact.errors.required">Student Contact is Required</span>
+              <span *ngIf = "StudentContact.errors.maxLength"> 
+                Invalid Phone Number
+            </span>                   
+            </div>
+        </div>
+        <br/>
+          <button type="submit" class="btn btn-success btn-block">Submit</button>
+      </form>
+</div>
+</div>
+
